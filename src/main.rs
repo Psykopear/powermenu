@@ -1,5 +1,6 @@
 use druid::widget::{Controller, ControllerHost, Flex, Image, ImageData, WidgetExt};
 use druid::{AppLauncher, Env, Event, EventCtx, Widget, WindowDesc};
+use std::process::Command;
 
 struct Clickable {
     action: Box<dyn Fn()>,
@@ -30,19 +31,21 @@ fn ui_builder() -> impl Widget<u32> {
     let shutdown = ControllerHost::new(
         Image::new(shutdown_data).fix_width(100.).center(),
         Clickable::new(|| {
-            println!("SHUTDOWN!");
+            Command::new("shutdown").spawn().expect("Can't shutdown");
         }),
     );
     let reboot = ControllerHost::new(
         Image::new(reboot_data).fix_width(100.).center(),
         Clickable::new(|| {
-            println!("REBOOT!");
+            Command::new("reboot").spawn().expect("Can't shutdown");
         }),
     );
     let logout = ControllerHost::new(
         Image::new(logout_data).fix_width(100.).center(),
         Clickable::new(|| {
-            println!("LOGOUT!");
+            let mut cmd = Command::new("i3-msg");
+            cmd.arg("exit");
+            cmd.spawn().expect("Can't logout of i3");
         }),
     );
 
