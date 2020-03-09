@@ -5,11 +5,19 @@ matrix:
   include:
   - os: linux
     rust: stable
-
 script:
-  - cargo build --release --all
+- cargo build --release --all
 addons:
   apt:
     packages:
     - libgtk-3-dev
     - libmount-dev
+deploy:
+  provider: releases
+  api_key:
+    secure: moLDqG6g8pUyLY88p4UPaGJ6EQsh7crwOpzuRYvczUcDDvJXn/3n+QGZKoR33uehLXMDGbPpPfn4RyW9fWPBYEA5bX9v2S8h/HCWamkCXQvjAfIP8KYF2aqVT/sg2ZbvP3F9Tyx9Pkdf9Mb1t65zrG2nL4tGW3BRWkeVJrBhGW2Vim2qPSCeXPpeAI3WQ+2hwYm1cgy3sAZJTWKz5YO3XFBv3KGJumhv9gA9kzGQQTIhY4uyQx3Sd1vx5Zy05E1lc5Pk9TCriC99TgtEg+OUK8hd6a3Kx9aShnXt8m2clR6qpCzxJTpo+x1ZCijE2iK1Jj0MDnC2/d2F7bQUbBH0oOoVg+WOeEPfHePkKGqWlC/V6aOr7KG+Zb77OOhscpuhas4uLrgZOGD4E+XGr4+qd3xGIVJwqcJLyZ2j92BP/8Q/67EB57lSKHeP3z1X3JQuvw2Qqqi0x8aZISknZ5HikJbcUVK74C8yZRcXvS3CSfUFg1rhewPs1UYUisoD1xV8yY1npCh45d+t0/407sJv5bmB2Ekjk16lwkEK+P1JMB+aQW4UyI5IGUSaUOB+NTgdvsz7wCfAbWhhWRwFuBIbawYN6FeWBWn1ED9MFKIuTVG7V5l/Yka3xAEyDy8NEH8QQ1W3zofzycfn8HGaNeNL+xT4wIOgOvGN0slXoHcbAlc=
+  file: ./target/releases/powermenu
+  skip_cleanup: true
+  on:
+    tags: true
+    repo: Psykopear/powermenu
