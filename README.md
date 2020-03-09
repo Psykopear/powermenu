@@ -9,3 +9,6 @@ A simple PowerMenu to shutdown, reboot and logout (from i3)
 - Reboot your pc (if you have the 'reboot' command)
 - Log out from i3
 - Doesn't work in any other case
+
+# Usage
+Download [latest release](https://github.com/Psykopear/powermenu/releases). Run it when you need it.
