@@ -1058,7 +1058,6 @@ name = "powermenu"
 version = "0.1.0"
 dependencies = [
  "druid",
- "system_shutdown",
 ]
 
 [[package]]
@@ -1316,15 +1315,6 @@ dependencies = [
  "quote 1.0.3",
  "syn 1.0.16",
  "unicode-xid 0.2.0",
-]
-
-[[package]]
-name = "system_shutdown"
-version = "3.0.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "035e081d603551d8d78db27d2232913269c749ea67648c369100049820406a14"
-dependencies = [
- "winapi",
 ]
 
 [[package]]
